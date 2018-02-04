@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : Veridical 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20131203
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="/static/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/static/fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="menu">
+			<ul>
+				<li><a href="/" accesskey="1" title="">Homepage</a></li>
+				<!-- <li><a href="#" accesskey="2" title="">Research</a></li> -->
+				<li><a href="/usefulLinks" accesskey="3" title="">Useful Links</a></li>
+				<!-- <li><a href="#" accesskey="4" title="">Careers</a></li> -->
+				<li class="current_page_item"><a href="#" accesskey="5" title="">About</a></li>
+			</ul>
+		</div>
+		<div id="logo">
+			<h1><a href="#">Deep Learning Poetry Generator</a></h1>
+			<!-- <span>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></span> --> </div> 
+	</div>
+</div>
+
+<!-- ***USEFUL LINKS*** -->
+<div id="wrapper1">
+	<div id="welcome" class="container">
+		<div class="title">
+			<!-- <h2>Generate a Poem</h2> -->
+			<h2>About our Deep Learning Model</h2>
+		</div>
+		<div class="content">
+		<!-- <pre> {{ results }} </pre>
+			<a href="/poem" class="button">Get Poem</a> -->
+		<p>The underlying motivation for this project was because the team had a mutual interest in wanting to learn more about machine learning and neural networks.  It was primarily research based as none of us had any experience with the subject matter or the associated tools and libraries.  This steep learning curve turned out to be one of the main challenges as there was an a lot to learn in a limited amount of time and natural language processing added more complexity.  After several weeks of trial and error, we were able to successfully create a neural network model using the Keras library and train it on Shakespearean sonnets.  This model, demonstrated on this web application, produces text output that is close to a Shakespearean sonnet, but the model training doesn’t capture a sonnet’s distinct rhyming and meter structure.  To do that we also wanted to implement a model in TensorFlow by attempting to replicate Miyamoto and Cho’s description of a gated word-char LSTM.  We hope adapting their Theano code to TensorFlow and also adding Attention will get near perfect results.  This is a work in progress so stay tuned! </p>
+		<!--
+		<p> Our neural language model is adapted from <a href="https://github.com/fchollet/keras/blob/master/examples/lstm_text_generation.py">here</a>.  It is written in Keras and TensorFlow.  We trained, evaluated, and tested our models on all 154 of Shakespeare's sonnets. We experimented with three different baseline models (Bidirectional, GRU, and LSTM) and adjusted the number of layers and nodes.  After tuning different hyperparameters and countless hours of training, we found that a Bidirectional char-level LSTM with 3 layers and 512 memory cells produced the best output, which is the model you see demonstrated here. Though this model produces text similar to a Shakesperean sonnet, it fails to capture the distinct rhyme and meter structure and also doesn't learn syntax well which is why the poems often don't make much sense. </p>
+		<p> To improve on the shortcomings from our initial model, we took inspiration from this paper titled <a href="https://arxiv.org/pdf/1508.06615.pdf">Character-Aware Neural Language Models</a> by Kim, Jernite, Sontag and Rush. It describes a neural language model that relies only on character-level inputs.  Their model uses a convolutional neural network (CNN) and a highway network over characters whose output is passed to a long short-term memory (LSTM) recurrent neural network language model (RNN-LM).  Predictions from the model are still made at the word-level.  Their analysis of this model shows that it is able to encode, from characters only, both semantic and orthographic information despite having 60% fewer parameters. We trained a TensorFlow implementation of their model on Shakespeare's sonnets and though better, it still doesn't output perfect poems. The following is an example of the output: </p>
+		<p>***PUT YOON KIM OUTPUT HERE</p>
+		<p>To obtain even better Shakesperean poems we have begun to implement a TensorFlow model based on this <a href="https://arxiv.org/pdf/1606.01700.pdf">Gated Word Character Recurrent Language Model</a> by Miyamoto and Cho.  A short description of the model is as follows.  The embedding module receives an input word, of which the character level inputs are converted into vector representations of words using a bidirectional LSTM and the word-level inputs are projected into another high-dimensional space by a word lookup table like GloVe.  The outputs of these are a word embedding and a character embedding that both represent the same word. These embeddings are then combined by the gate. This final word embedding, (Xwt in the paper) is then fed into a 2 layer vanilla LSTM before finally passing through a softmax layer to predict the output.  The final vector representations of words are used in the LSTM language model which will predict the next word given all the preceding words using a softmax function. This has shown success with natural language processing and we believe adding attention to the Miyamoto and Cho Model will get us near perfect results.  Stay tuned for the verdict!</p>
+		 -->
+		</div>
+	</div>
+</div>
+
+<!-- ***INITIAL KERAS MODEL*** -->
+<div id="wrapper3">
+	<div id="welcome" class="container">
+		<div class="title">
+			<h2>Initial Keras Model</h2>
+			<span class="byline">Good...</span>
+		</div>
+			<div class="content">
+				<p> Our neural language model is adapted from <a href="https://github.com/fchollet/keras/blob/master/examples/lstm_text_generation.py">here</a>.  It is written in Keras and TensorFlow.  We trained, evaluated, and tested our models on all 154 of Shakespeare's sonnets. We experimented with three different baseline models (Bidirectional, GRU, and LSTM) and adjusted the number of layers and nodes.  After tuning different hyperparameters and countless hours of training, we found that a Bidirectional char-level LSTM with 3 layers and 512 memory cells produced the best output, which is the model you see demonstrated on this website. Though this model produces text similar to a Shakesperean sonnet, it fails to capture the distinct rhyme and meter structure and also doesn't learn syntax well which is why the poems often don't make much sense. </p>
+			</div>
+	</div>
+</div>
+
+
+<!-- ***YOON KIM MODEL*** -->
+<div id="wrapper1">
+	<div id="welcome" class="container">
+		<div class="title">
+			<h2>Character-Aware Neural Language Model by Kim, Jernite, Sontag and Rush.</h2>
+			<span class="byline">Better...</span>
+		</div>
+		<div class="content">
+			<p> To improve on the shortcomings from our initial model, we took inspiration from this paper titled <a href="https://arxiv.org/pdf/1508.06615.pdf">Character-Aware Neural Language Models</a> by Kim, Jernite, Sontag and Rush. It describes a neural language model that relies only on character-level inputs.  Their model uses a convolutional neural network (CNN) and a highway network over characters whose output is passed to a long short-term memory (LSTM) recurrent neural network language model (RNN-LM).  Predictions from the model are still made at the word-level.  Their analysis of this model shows that it is able to encode, from characters only, both semantic and orthographic information despite having 60% fewer parameters. We trained a TensorFlow implementation of their model on Shakespeare's sonnets and though better, it still doesn't output perfect poems. The following is an example of the output: </p>
+			<p>As flowers posterity? of worth, again, I perceived;</br>
+			
+			Then his my steep-up is my look I compare</br>
+			
+			My you would rude, from my see mind's be</br>
+			
+			Die to seen that Time: old hugely tribes:</br>
+			
+			The oft so believe of you violet lines</br>
+			
+			To slander's of all this seemly violet me,</br>
+			
+			You subject it than and taken.</br>
+			
+			But thou desire actor thy review travel's thy With powers</br>
+			
+			When acceptance to ten not I breast,</br>
+			
+			As to thee, disgrace may thou abide;</br>
+			
+			The see or my so; this journey to hideous gone,</br>
+			
+			So Weary the loves even they by before of bootless</br>
+			
+			And by view myself thy thing together</br>
+			
+			What heavy stand to oblation, and thy fragrant pen,</br>
+			
+			Yet let for thoughts, that the clearer their seemly</br>
+			
+			That by sad time your is thinly in the alone.</br>
+			
+			</br>
+			
+			So vulgar 'tis that thou Weary another thou longer</br>
+			
+			To precious that the pencil, in with gone doth deserts?</br>
+			
+			To Fairing yet times thou best place.</br>
+			
+			</br>
+			
+			O, I say fill'd come myself dear the come,</br>
+			
+			To your my head, couldst like this thee</br>
+			
+			Against me. nor for let with face wind;</br>
+			
+			Even not alone shadow he days.</br>
+			
+			My seeing father image kingdoms eyelids</br>
+			
+			And barren on fair that bounty disgrace.</br>
+			
+			end? thou with praise face:</br>
+			
+			Such make lies power that time wilfulness youth,</br>
+			
+			That love, all hooks, her fell manners doth housewife</br>
+			
+			Even that, that out do, miser some and all prevailed?</br>
+			
+			Thyself affections and place, now verse griefs </br>
+			
+			Yourself on were my death, though by heart's weep </br>
+			
+			lamb mortal no unfair are thy lie. </br>
+			
+			usury, known</p>
+		</div>
+	</div>
+</div>
+
+<!-- ***MIYAMOTO AND CHO MODEL*** -->
+<div id="wrapper3">
+	<div id="welcome" class="container">
+		<div class="title">
+			<h2>Gated Word Character Recurrent Language Model by Miyamoto and Cho (with Attention Added)</h2>
+			<span class="byline">Best?</span>
+		</div>
+			<div class="content">
+				<p>To obtain even better Shakesperean poems we are in the process of implementing a TensorFlow model based on this <a href="https://arxiv.org/pdf/1606.01700.pdf">Gated Word Character Recurrent Language Model</a> by Miyamoto and Cho.  A short description of the model is as follows.  The embedding module receives an input word, of which the character level inputs are converted into vector representations of words using a bidirectional LSTM and the word-level inputs are projected into another high-dimensional space by a word lookup table like GloVe.  The outputs of these are a word embedding and a character embedding that both represent the same word. These embeddings are then combined by the gate. This final word embedding, (Xwt in the paper) is then fed into a 2 layer vanilla LSTM before finally passing through a softmax layer to predict the output.  The final vector representations of words are used in the LSTM language model which will predict the next word given all the preceding words using a softmax function. This has shown success with natural language processing and we believe adding attention to the Miyamoto and Cho Model will get us near perfect results.  Stay tuned for the verdict!</p>
+			</div>
+	</div>
+</div>
+
+<!-- ***BOOKS*** -->
+<!--
+<div id="wrapper1">
+	<div id="welcome" class="container">
+		<div class="title">
+			<h2>Books</h2>
+		</div>
+		<div class="content">
+			<p><a href="https://www.amazon.com/Fundamentals-Deep-Learning-Next-Generation-Intelligence/dp/1491925612">Fundamentals of Deep Learning by Nikhil Buduma</a></p>
+			<p><a href="https://www.amazon.com/Introduction-Machine-Learning-Python-Scientists/dp/1449369413">Introduction to Machine Learning with Python by Andreas C. Muller and Sarah Guido</a></p>
+			<p><a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning by Michael Neilsen</a></p>
+		</div>
+	</div>
+</div>
+-->
+
+<!--
+ <div id="wrapper3">
+	<div id="portfolio" class="container">
+		<div class="title">
+			<h2>Design Portfolio</h2>
+			<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span> </div>
+		<div class="pbox1">
+			<div class="column1">
+				<div class="box"> <span class="icon icon-comments"></span>
+					<h3>Vestibulum venenatis</h3>
+					<p>Fermentum nibh augue praesent a lacus at urna congue rutrum.</p>
+				</div>
+			</div>
+			<div class="column2">
+				<div class="box"> <span class="icon icon-cogs"></span>
+					<h3>Praesent scelerisque</h3>
+					<p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
+				</div>
+			</div>
+			<div class="column3">
+				<div class="box"> <span class="icon icon-coffee"></span>
+					<h3>Donec dictum metus</h3>
+					<p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
+				</div>
+			</div>
+			<div class="column4">
+				<div class="box"> <span class="icon icon-cloud"></span>
+					<h3>Mauris vulputate dolor</h3>
+					<p>Rutrum fermentum nibh in augue praesent urna congue rutrum.</p>
+				</div>
+			</div>
+		</div>
+		<div class="pbox2">
+			<div class="column1">
+				<div class="box"> <span class="icon icon-asterisk"></span>
+					<h3>Rhoncus volutpat</h3>
+					<p>Fermentum nibh augue praesent a lacus at urna congue rutrum.</p>
+				</div>
+			</div>
+			<div class="column2">
+				<div class="box"> <span class="icon icon-headphones"></span>
+					<h3>Sed odio sagittis</h3>
+					<p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
+				</div>
+			</div>
+			<div class="column3">
+				<div class="box"> <span class="icon icon-user"></span>
+					<h3>Aenean elementum</h3>
+					<p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
+				</div>
+			</div>
+			<div class="column4">
+				<div class="box"> <span class="icon icon-signal"></span>
+					<h3>Etiam posuere augue</h3>
+					<p>Rutrum fermentum nibh in augue praesent urna congue rutrum.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div id="wrapper2">
+	<div id="featured" class="container">
+		<div class="box1">
+			<h2><span class="icon icon-group"></span>Fusce ultrices fringilla</h2>
+			<p>Aliquam erat volutpat. Pellentesque tristique ante ut risus. Quisque dictum. Integer nisl risus, sagittis convallis, rutrum id, elementum congue, nibh. Suspendisse dictum porta lectus. Donec placerat odio vel elit. Nullam ante orci, pellentesque eget, tempus quis, ultrices in, est. Curabitur sit amet nulla. Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</p>
+		</div>
+		<div class="box2">
+			<h2><span class="icon icon-briefcase"></span>Etiam posuere augue</h2>
+			<p>Aliquam erat volutpat. Pellentesque tristique ante ut risus. Quisque dictum. Integer nisl risus, sagittis convallis, rutrum id, elementum congue, nibh. Suspendisse dictum porta lectus. Donec placerat odio vel elit. Nullam ante orci, pellentesque eget, tempus quis, ultrices in, est. Curabitur sit amet nulla. Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</p>
+		</div>
+	</div>
+</div>
+ </div>
+ -->
+<div id="copyright">
+	<div class="title">
+		<!-- <h2>Get in touch</h2> -->
+		<h2>Thanks for visiting</h2>
+		<!-- <span class="byline">Phasellus nec erat sit amet nibh pellentesque congue</span> </div> -->
+		<span class="byline">Keisha Arnold, Jacob Karcz, Carrie Treeful</span> </div>
+	<ul class="contact">
+		<!--
+		<li><a href="#" class="icon icon-twitter"><span>Twitter</span></a></li>
+		<li><a href="#" class="icon icon-facebook"><span></span></a></li>
+		<li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
+		<li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
+		<li><a href="#" class="icon icon-rss"><span>Pinterest</span></a></li>
+		 -->
+	</ul>
+	<p>&copy; All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+</div>
+</body>
+</html>

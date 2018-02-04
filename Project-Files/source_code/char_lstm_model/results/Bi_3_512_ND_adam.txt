@@ -1,0 +1,17 @@
+Training Data
+--------------------------------------------------
+Model Type: Bidirectional
+Layers: 3
+Layer Size: 512
+Epochs: 30
+Batch Size: 64
+Dropout: 0
+Max Length: 50
+Step: 1
+Learning Rate: default Adam 
+Reduce Learning Rate On Plateau: False
+Optimizer: adam
+Training Loss: 0.0581
+Validation Loss: 3.57074406862
+Training Perplexity: 1.06664193652
+Model Filename:  Bi_3_512_ND_adam_25-0.0581.hdf5
